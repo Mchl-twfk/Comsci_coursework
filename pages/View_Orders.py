@@ -15,5 +15,7 @@ if clear_button:
     yes_button = st.button("Yes")
     no_button = st.button("No")
 
-st.table(create_table)
+
+st.table()
+
 
