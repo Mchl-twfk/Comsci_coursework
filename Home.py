@@ -20,6 +20,7 @@ def create_table():
                 ready? BOOLEAN
                 )
                 """)
+    con.commit()
 
 ##add orders to the table
 def add_order():
@@ -27,4 +28,6 @@ def add_order():
                 INSERT INTO orders
                 st.session_state.orderlist""")
     
-##
+
+create_table()
+
