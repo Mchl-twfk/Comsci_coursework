@@ -24,4 +24,7 @@ def create_table():
 ##add orders to the table
 def add_order():
     cur.execute(f"""
-                INSERT INTO orders""")
+                INSERT INTO orders
+                st.session_state.orderlist""")
+    
+##
