@@ -26,14 +26,14 @@ def Query(SQL, inputs=()):
 ##create table in the database
 def create_table():
 
-    Query("""
-                CREATE TABLE IF NOT EXISTS orders(
-                table number INTEGER,
-                order TEXT,
-                in progress BOOLEAN,
-                ready? BOOLEAN
-                )
-                """)
+    Query("""CREATE TABLE IF NOT EXISTS orders(
+            table number INTEGER,
+            order TEXT,
+            in progress BOOLEAN,
+            ready? BOOLEAN
+            )
+            """)
+    con.commit()
 
 ##add orders to the table
 def add_order():
