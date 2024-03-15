@@ -18,28 +18,30 @@ def Query(SQL, inputs=()):
         with con:
             with closing(con.cursor()) as cur:
                 if inputs == ():
-                    Records = cur.execute(SQL)
-                    return Records.fetchall()
+                    return cur.execute(SQL).fetchall()
                 else:
-                    cur.execute(SQL, inputs)
+                    return cur.execute(SQL, inputs).fetchall()
 
 ##create table in the database
 def create_table():
-
-    Query("""CREATE TABLE IF NOT EXISTS orders(
-            table number INTEGER,
-            order TEXT,
-            in progress BOOLEAN,
-            ready? BOOLEAN
-            )
-            """)
-    con.commit()
+    Query("""
+        CREATE TABLE IF NOT EXISTS orders (
+            index_num INTEGER PRIMARY KEY,
+            dish_num INTEGER FOREIGN KEY,
+            table_number INTEGER,
+            Order_Name TEXT,
+            in_progress BOOLEAN,
+            ready BOOLEAN
+        );
+    """)
 
 ##add orders to the table
 def add_order():
-    cur.execute(f"""
-                INSERT INTO orders
-                st.session_state.orderlist""")
+    Query("""
+            INSERT INTO orders VALUES
+            (?, ?, ?, ?, ?, ?);
+            """, (1, 2, 3, "test", 0, 0))
+
 
 
 
