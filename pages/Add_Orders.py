@@ -1,12 +1,22 @@
 import streamlit as st
 from Home import add_order
 import sqlite3
+from Home import Query
 
-st.title("-Add an Order-")
 
 con = sqlite3.connect("orders.db")
 cur = con.cursor()
 
+##add orders to the table
+def add_order(input1, input2, input3, input4):
+    Query("""
+            INSERT INTO orders(table_number, Order_name, in_progress, ready) VALUES
+            (?, ?, ?, ?);
+            """, ((input1),(input2),(input3),(input4))
+            )
+
+
+st.title("-Add an Order-")
 
 tablenum = st.number_input("Table Number", min_value=1, max_value=50)
 tablenum
@@ -29,9 +39,16 @@ if Clear:
 ##sends the order to the database
 if Send:
     try:
+        n=0
         for i in st.session_state.orderlist:
-            add_order()
+            list_element = st.session_state.orderlist[n]
+            add_order((tablenum), (list_element), (0), (0))
+            n=n+1
     except Exception as e:
         e
 
 st.session_state
+
+
+
+
