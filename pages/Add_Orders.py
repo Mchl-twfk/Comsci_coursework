@@ -1,5 +1,4 @@
 import streamlit as st
-from Home import add_order
 import sqlite3
 from Home import Query
 
@@ -18,10 +17,12 @@ def add_order(input1, input2, input3, input4):
 
 st.title("-Add an Order-")
 
+
 tablenum = st.number_input("Table Number", min_value=1, max_value=50)
 tablenum
 if "orderlist" not in st.session_state:
     st.session_state.orderlist = []
+
 
 order_entry = st.text_input("Enter order")
 Enter = st.button("Enter") 
@@ -38,17 +39,12 @@ if Clear:
 
 ##sends the order to the database
 if Send:
-    try:
-        n=0
-        for i in st.session_state.orderlist:
-            list_element = st.session_state.orderlist[n]
-            add_order((tablenum), (list_element), (0), (0))
-            n=n+1
-    except Exception as e:
-        e
-
+    n=0
+    for i in st.session_state.orderlist:
+        list_element = st.session_state.orderlist[n]
+        add_order((tablenum), (list_element), (0), (0))
+        n=n+1
+   
 st.session_state
-
-
 
 

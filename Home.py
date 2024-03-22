@@ -35,12 +35,8 @@ def create_table():
         );
     """)
 
-def dish_no_gen(randint, randrange):
-    dishnum = ()
-    for i in range(1,7):
-        randnum = (r.randint(0,9))
-        dishnum.append(randnum)
-    print(dishnum)
+
+
 
 create_table()
 
